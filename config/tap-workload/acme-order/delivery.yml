@@ -8,6 +8,7 @@ metadata:
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: acme-fitness-store
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: server
     networking.knative.dev/visibility: cluster-local
     app.kubernetes.io/component: run
@@ -17,6 +18,7 @@ spec:
     matchLabels:
       app.kubernetes.io/component: run
       app.kubernetes.io/part-of: acme-fitness-store
+      apps.tanzu.vmware.com/has-tests: "true"
       apps.tanzu.vmware.com/workload-type: server
       carto.run/workload-name: acme-order
       networking.knative.dev/visibility: cluster-local
@@ -35,10 +37,11 @@ spec:
           appliveview-sample/app-live-view-appflavours-steeltoe
         developer.conventions/target-containers: workload
         kubectl.kubernetes.io/last-applied-configuration: |
-          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"acme-fitness-store","apps.tanzu.vmware.com/workload-type":"server","networking.knative.dev/visibility":"cluster-local"},"name":"acme-order","namespace":"tap-workload"},"spec":{"env":[{"name":"AcmeServiceSettings__AuthUrl","value":"http://appsso-acme-fitness.tap-workload.tap.vmwareexploreindia.com"},{"name":"PAYMENT_SERVICE_SERVICE_HOST","value":"acme-payment"}],"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"ports","value":[{"containerPort":8080,"name":"http","port":80}]}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/explore-india-booth/acme-fitness-store"},"subPath":"apps/acme-order"}}}
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"acme-fitness-store","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"server","networking.knative.dev/visibility":"cluster-local"},"name":"acme-order","namespace":"tap-workload"},"spec":{"env":[{"name":"AcmeServiceSettings__AuthUrl","value":"http://appsso-acme-fitness.tap-workload.tap.vmwareexploreindia.com"},{"name":"PAYMENT_SERVICE_SERVICE_HOST","value":"acme-payment"}],"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"ports","value":[{"containerPort":8080,"name":"http","port":80}]}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/explore-india-booth/acme-fitness-store"},"subPath":"apps/acme-order"}}}
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: acme-fitness-store
+        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: server
         carto.run/workload-name: acme-order
         networking.knative.dev/visibility: cluster-local
@@ -52,7 +55,7 @@ spec:
           value: http://appsso-acme-fitness.tap-workload.tap.vmwareexploreindia.com
         - name: PAYMENT_SERVICE_SERVICE_HOST
           value: acme-payment
-        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-order-tap-workload@sha256:09dd6dfd11aea5f4db60ddea300e5fff90302f21880172e61838cad11d411da9
+        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-order-tap-workload@sha256:a3f6d956278731ee9766d4bb453b212b1d1dfbc3d68cf38ceffd634a943b4955
         name: workload
         resources: {}
         securityContext:
@@ -65,6 +68,7 @@ metadata:
   name: acme-order
   labels:
     app.kubernetes.io/part-of: acme-fitness-store
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: server
     networking.knative.dev/visibility: cluster-local
     app.kubernetes.io/component: run
@@ -73,6 +77,7 @@ spec:
   selector:
     app.kubernetes.io/component: run
     app.kubernetes.io/part-of: acme-fitness-store
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: server
     carto.run/workload-name: acme-order
     networking.knative.dev/visibility: cluster-local
