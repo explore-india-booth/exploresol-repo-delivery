@@ -62,7 +62,7 @@ spec:
           value: http://appsso-acme-fitness.tap-workload.tap.vmwareexploreindia.com/oauth2/jwks
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080"
-        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-identity-tap-workload@sha256:2ed96046aac013202597f2ba9506d95e0633abdd0fac1e2a97196722bcf42b4c
+        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-identity-tap-workload@sha256:2d06c40db062888ca471c99af42acc984679e7d2b455fbce36dc1eb13d117291
         livenessProbe:
           httpGet:
             path: /livez
