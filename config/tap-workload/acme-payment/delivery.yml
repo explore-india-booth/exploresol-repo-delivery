@@ -8,7 +8,6 @@ metadata:
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: acme-fitness-store
-    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: server
     app.kubernetes.io/component: run
     carto.run/workload-name: acme-payment
@@ -18,10 +17,10 @@ spec:
       app.kubernetes.io/component: run
       app.kubernetes.io/part-of: acme-fitness-store
       apps.tanzu.vmware.com/auto-configure-actuators: "false"
-      apps.tanzu.vmware.com/has-tests: "true"
       apps.tanzu.vmware.com/workload-type: server
       carto.run/workload-name: acme-payment
       conventions.carto.run/framework: spring-boot
+      services.conventions.carto.run/postgres: workload
       tanzu.app.live.view: "true"
       tanzu.app.live.view.application.actuator.path: actuator
       tanzu.app.live.view.application.actuator.port: "8080"
@@ -35,24 +34,27 @@ spec:
         conventions.carto.run/applied-conventions: |-
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/spring-boot
+          spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
           spring-boot-convention/spring-boot-actuator
           spring-boot-convention/spring-boot-actuator-probes
           spring-boot-convention/app-live-view-appflavour-check
           spring-boot-convention/app-live-view-connector-boot
           spring-boot-convention/app-live-view-appflavours-boot
+          spring-boot-convention/service-intent-postgres
           appliveview-sample/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
         kubectl.kubernetes.io/last-applied-configuration: |
-          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"acme-fitness-store","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"server"},"name":"acme-payment","namespace":"tap-workload"},"spec":{"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"ports","value":[{"containerPort":8080,"name":"http","port":80}]}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/explore-india-booth/acme-fitness-store.git"},"subPath":"apps/acme-payment"}}}
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"acme-fitness-store","apps.tanzu.vmware.com/workload-type":"server"},"name":"acme-payment","namespace":"tap-workload"},"spec":{"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"ports","value":[{"containerPort":8080,"name":"http","port":80}]}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/gm2552/acme-fitness-store"},"subPath":"apps/acme-catalog"}}}
+        services.conventions.carto.run/postgres: postgresql/42.3.3
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: acme-fitness-store
         apps.tanzu.vmware.com/auto-configure-actuators: "false"
-        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: server
         carto.run/workload-name: acme-payment
         conventions.carto.run/framework: spring-boot
+        services.conventions.carto.run/postgres: workload
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.path: actuator
         tanzu.app.live.view.application.actuator.port: "8080"
@@ -62,8 +64,8 @@ spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
-          value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080"
-        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-payment-tap-workload@sha256:259f731e167398a767b7d0548ec8166466661432a1e76caa8c8ed1f1d8cd0003
+          value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-payment-tap-workload@sha256:02411b465e133d5d3800be7736f5dd64e0bdbef0857c22f2c3f941534be30994
         livenessProbe:
           httpGet:
             path: /livez
@@ -89,7 +91,6 @@ metadata:
   name: acme-payment
   labels:
     app.kubernetes.io/part-of: acme-fitness-store
-    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: server
     app.kubernetes.io/component: run
     carto.run/workload-name: acme-payment
@@ -98,10 +99,10 @@ spec:
     app.kubernetes.io/component: run
     app.kubernetes.io/part-of: acme-fitness-store
     apps.tanzu.vmware.com/auto-configure-actuators: "false"
-    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: server
     carto.run/workload-name: acme-payment
     conventions.carto.run/framework: spring-boot
+    services.conventions.carto.run/postgres: workload
     tanzu.app.live.view: "true"
     tanzu.app.live.view.application.actuator.path: actuator
     tanzu.app.live.view.application.actuator.port: "8080"
