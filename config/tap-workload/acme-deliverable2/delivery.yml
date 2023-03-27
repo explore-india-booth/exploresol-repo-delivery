@@ -1,0 +1,95 @@
+#@ load("@ytt:data", "data")
+
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-09-21T17:15:58Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: acme-fitness-store
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: server
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: acme-catalog
+    carto.run/workload-namespace: tap-workload
+    networking.knative.dev/visibility: cluster-local
+  name: acme-catalog
+  namespace: tap-workload
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: git-secret
+  - name: gitops_sub_path
+    value: config/tap-workload/acme-catalog
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/explore-india-booth/exploresol-repo-delivery.git
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-09-21T17:15:58Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: acme-fitness-store
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: server
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: acme-identity
+    carto.run/workload-namespace: tap-workload
+    networking.knative.dev/visibility: cluster-local
+  name: acme-identity
+  namespace: tap-workload
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: git-secret
+  - name: gitops_sub_path
+    value: config/tap-workload/acme-identity
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/explore-india-booth/exploresol-repo-delivery.git
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-09-21T17:15:58Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: acme-fitness-store
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: server
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: acme-payment
+    carto.run/workload-namespace: tap-workload
+    networking.knative.dev/visibility: cluster-local
+  name: acme-payment
+  namespace: tap-workload
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: git-secret
+  - name: gitops_sub_path
+    value: config/tap-workload/acme-payment
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/explore-india-booth/exploresol-repo-delivery.git
