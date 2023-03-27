@@ -4,7 +4,7 @@
 apiVersion: carto.run/v1alpha1
 kind: Deliverable
 metadata:
-  creationTimestamp: "2022-09-21T17:15:58Z"
+  creationTimestamp: "2022-09-15T19:11:05Z"
   generation: 1
   labels:
     app.kubernetes.io/component: deliverable
@@ -15,17 +15,17 @@ metadata:
     carto.run/resource-name: deliverable
     carto.run/supply-chain-name: source-to-url
     carto.run/template-kind: ClusterTemplate
-    carto.run/workload-name: acme-catalog
+    carto.run/workload-name: acme-shopping
     carto.run/workload-namespace: tap-workload
     networking.knative.dev/visibility: cluster-local
-  name: acme-catalog
+  name: acme-shopping
   namespace: tap-workload
 spec:
   params:
   - name: gitops_ssh_secret
     value: git-secret
   - name: gitops_sub_path
-    value: config/tap-workload/acme-catalog
+    value: config/tap-workload/acme-shopping
   source:
     git:
       ref:
@@ -35,7 +35,7 @@ spec:
 apiVersion: carto.run/v1alpha1
 kind: Deliverable
 metadata:
-  creationTimestamp: "2022-09-21T17:15:58Z"
+  creationTimestamp: "2022-09-21T17:16:02Z"
   generation: 1
   labels:
     app.kubernetes.io/component: deliverable
@@ -46,17 +46,17 @@ metadata:
     carto.run/resource-name: deliverable
     carto.run/supply-chain-name: source-to-url
     carto.run/template-kind: ClusterTemplate
-    carto.run/workload-name: acme-identity
+    carto.run/workload-name: acme-order
     carto.run/workload-namespace: tap-workload
     networking.knative.dev/visibility: cluster-local
-  name: acme-identity
+  name: acme-order
   namespace: tap-workload
 spec:
   params:
   - name: gitops_ssh_secret
     value: git-secret
   - name: gitops_sub_path
-    value: config/tap-workload/acme-identity
+    value: config/tap-workload/acme-order
   source:
     git:
       ref:
@@ -66,7 +66,6 @@ spec:
 apiVersion: carto.run/v1alpha1
 kind: Deliverable
 metadata:
-  creationTimestamp: "2022-09-21T17:15:58Z"
   generation: 1
   labels:
     app.kubernetes.io/component: deliverable
@@ -77,17 +76,17 @@ metadata:
     carto.run/resource-name: deliverable
     carto.run/supply-chain-name: source-to-url
     carto.run/template-kind: ClusterTemplate
-    carto.run/workload-name: acme-payment
+    carto.run/workload-name: acme-cart
     carto.run/workload-namespace: tap-workload
     networking.knative.dev/visibility: cluster-local
-  name: acme-payment
+  name: acme-cart
   namespace: tap-workload
 spec:
   params:
   - name: gitops_ssh_secret
     value: git-secret
   - name: gitops_sub_path
-    value: config/tap-workload/acme-payment
+    value: config/tap-workload/acme-cart
   source:
     git:
       ref:
