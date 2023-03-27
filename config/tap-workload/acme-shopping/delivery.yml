@@ -42,7 +42,7 @@ spec:
       - env:
         - name: PORT
           value: "8080"
-        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-shopping-tap-workload@sha256:24847827f3903fa64cb06125f3f30aa58a46b45dad0912a4a149fdcbcf992476
+        image: exploreindiatapsolreg.azurecr.io/exploredemo/supply-chain/acme-shopping-tap-workload@sha256:bdd5f7166b53c47957f57d03855110244683660fe7633aa6ddc1d537e4c55969
         name: workload
         resources: {}
         securityContext:
