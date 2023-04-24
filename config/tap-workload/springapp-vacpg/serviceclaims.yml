@@ -20,7 +20,7 @@ metadata:
   annotations:
     kapp.k14s.io/change-group: servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: petclinic-server
+    app.kubernetes.io/part-of: spring-petclinic
     apps.kubernetes.io/name: spring-petclinic
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
