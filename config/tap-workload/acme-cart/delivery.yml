@@ -55,7 +55,7 @@ spec:
             secretKeyRef:
               key: password
               name: cart-redis-pass
-        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/acme-cart-tap-workload@sha256:a31f2a1dda39466ed7262345fcdae44dbf34296665aa87e2c8b785de24b2638d
+        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/acme-cart-tap-workload@sha256:3de421ab9563a8321b3f4af1c5fd2631a185d9e6ecc0660f43cbce6b6d82059a
         name: workload
         resources: {}
         securityContext:
