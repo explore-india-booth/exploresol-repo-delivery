@@ -7,7 +7,7 @@ metadata:
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: tanzu-java-web-app
+    app.kubernetes.io/part-of: tanzu-innerloop-app
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
@@ -37,11 +37,11 @@ spec:
           spring-boot-convention/app-live-view-appflavour-check
           spring-boot-convention/app-live-view-connector-boot
           spring-boot-convention/app-live-view-appflavours-boot
-        developer.apps.tanzu.vmware.com/image-source-digest: exploreindiatapsolreg.azurecr.io/tap150/build-service/innerloop:latest@sha256:780b63d0270b9cf196df091e56a8e318e721d30a2d9882f3da83e33b3d8d7e6b
+        developer.apps.tanzu.vmware.com/image-source-digest: exploreindiatapsolreg.azurecr.io/tap150/build-service/innerloop:latest@sha256:450d8588380366077a4b4fc417275ec6ae36d6e3bdd180a4c5a3c607042313ff
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: tanzu-java-web-app
+        app.kubernetes.io/part-of: tanzu-innerloop-app
         apps.tanzu.vmware.com/auto-configure-actuators: "true"
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
@@ -61,7 +61,7 @@ spec:
           value: "9005"
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details="always" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include="*" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/tanzu-innerloop-app-tap-workload@sha256:0dfea482a5766e3e32fac0c26ded4a6a46ac0595184d92671229e2f02fd18f42
+        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/tanzu-innerloop-app-tap-workload@sha256:083994700253fc4be30709c105d0e99367603aa81299fbeef39b911550db6fe2
         livenessProbe:
           httpGet:
             path: /livez
