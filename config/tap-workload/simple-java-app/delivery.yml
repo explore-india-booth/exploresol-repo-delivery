@@ -16,6 +16,7 @@ spec:
   template:
     metadata:
       annotations:
+        autoscaling.knative.dev/minScale: "2"
         boot.spring.io/version: 2.7.3
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
@@ -47,7 +48,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/simple-java-app-tap-workload@sha256:aae4ca361bd8d709c1d426654925428f55b75afc09df39adefaf1240c42d2f01
+        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/simple-java-app-tap-workload@sha256:8e424a632227b4c17d12e82743e8548f14272052989f44114a1bc16af181a8ad
         livenessProbe:
           httpGet:
             path: /livez
