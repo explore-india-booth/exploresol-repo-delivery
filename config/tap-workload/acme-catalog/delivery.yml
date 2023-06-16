@@ -74,7 +74,7 @@ spec:
           value: "true"
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/acme-catalog-tap-workload@sha256:47e8f6b13b96a3739169a99012220c045a2fbd8816fb91bef6d0f62c9b9a3542
+        image: exploreindiatapsolreg.azurecr.io/tap150/build-service/acme-catalog-tap-workload@sha256:6c7a13a9ef7182bc630f43f88afbcc58dfadd39085811308aac7c93c9bbcf7be
         livenessProbe:
           httpGet:
             path: /livez
