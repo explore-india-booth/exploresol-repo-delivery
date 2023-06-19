@@ -16,8 +16,9 @@ waitRules:
 apiVersion: servicebinding.io/v1alpha3
 kind: ServiceBinding
 metadata:
-  name: springapp-vacpg-spring-petclinic-db
+  name: springapp-vacpg-db
   annotations:
+    autoscaling.knative.dev/minScale: "1"
     kapp.k14s.io/change-group: servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: spring-petclinic
@@ -27,11 +28,11 @@ metadata:
     app.kubernetes.io/component: run
     carto.run/workload-name: springapp-vacpg
 spec:
-  name: spring-petclinic-db
+  name: db
   service:
-    apiVersion: v1
-    kind: Secret
-    name: spring-petclinic-db
+    apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+    kind: ClassClaim
+    name: psql-1
   workload:
     apiVersion: serving.knative.dev/v1
     kind: Service
