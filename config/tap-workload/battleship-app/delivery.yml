@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: battleship-app
     spec:
       containers:
-      - image: exploreindiatapsolreg.azurecr.io/tap150/build-service/battleship-app-tap-workload@sha256:ec4744e718d99d5571ccb5313f9581c61d67f6c695eba1be8410cd47916fc97d
+      - image: exploreindiatapsolreg.azurecr.io/tap150/build-service/battleship-app-tap-workload@sha256:2a747ed4daeb2d91cc7ee7b9da5e10cbc402b72a24be4e6ad1164aaf50247e72
         name: workload
         resources: {}
         securityContext:
