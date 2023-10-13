@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: tdp-configurator
     spec:
       containers:
-      - image: exploreindiatapsolreg.azurecr.io/tap161/build-service/tdp-configurator-tap-workload@sha256:5011d147327c8134813423998fd560e3669ceccfaf963a429dd9414ca459adf2
+      - image: exploreindiatapsolreg.azurecr.io/tap161/build-service/tdp-configurator-tap-workload@sha256:ed8874b47ca7353b51c674fbad9a8d101b4839a66806691282945e235b7e9647
         name: workload
         resources: {}
         securityContext:
