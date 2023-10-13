@@ -55,7 +55,7 @@ spec:
           value: http://appsso-acme-fitness.tap-workload.tap.vmwareexploreindia.com
         - name: PAYMENT_SERVICE_SERVICE_HOST
           value: acme-payment
-        image: exploreindiatapsolreg.azurecr.io/tap161/build-service/acme-order-tap-workload@sha256:796f35647e8a25e2adb50b77cd177c8f418d3e4ece12810709a6eca1c1ebeeff
+        image: exploreindiatapsolreg.azurecr.io/tap161/build-service/acme-order-tap-workload@sha256:0ef228fd924acab994567cc6f59fe43d9e6690735e906052dbac5991064156ed
         name: workload
         resources: {}
         securityContext:
