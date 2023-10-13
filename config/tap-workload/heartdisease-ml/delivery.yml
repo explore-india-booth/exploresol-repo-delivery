@@ -29,7 +29,7 @@ spec:
         carto.run/workload-name: heartdisease-ml
     spec:
       containers:
-      - image: exploreindiatapsolreg.azurecr.io/tap161/build-service/heartdisease-ml-tap-workload@sha256:1718d0773dc6b59f0bd70bd78ec005ce945936adf4762c660d20a1efd7c5668c
+      - image: exploreindiatapsolreg.azurecr.io/tap161/build-service/heartdisease-ml-tap-workload@sha256:531240f10ce53c9c0f22413a23e1f8322ab4f49dca4f2e72096a1462503b92d9
         name: workload
         resources: {}
         securityContext:
