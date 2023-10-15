@@ -60,12 +60,12 @@ spec:
       containers:
       - env:
         - name: SPRING_PROFILES_ACTIVE
-          value: postgres
+          value: mysql
         - name: JAVA_TOOL_OPTIONS
           value: |-
             -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9005
              -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s" -Dspring.devtools.restart.enabled="true" -Dspring.devtools.restart.poll-interval="2s" -Dspring.devtools.restart.quiet-period="1s"
-        image: exploreindiatapsolreg.azurecr.io/tap161/build-service/springapp-vacpg-tap-workload@sha256:c1f498a0b76d6f6c2ebdd8d5a43d055ce9b2cc5bf563a42cd8e9b9343ffbfe9e
+        image: exploreindiatapsolreg.azurecr.io/tap161/build-service/springapp-vacpg-tap-workload@sha256:86c910c5773cad02ba9a7eff854637b10c41642affcd060839c7378eaefb6226
         livenessProbe:
           httpGet:
             path: /livez
