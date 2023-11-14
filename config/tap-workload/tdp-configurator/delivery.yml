@@ -16,6 +16,7 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/correlationid: exploreindiatapsolreg.azurecr.io/tap170/tap-packages?sub_path=builder
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
@@ -29,7 +30,7 @@ spec:
         carto.run/workload-name: tdp-configurator
     spec:
       containers:
-      - image: exploreindiatapsolreg.azurecr.io/tap161/build-service/tdp-configurator-tap-workload@sha256:5011d147327c8134813423998fd560e3669ceccfaf963a429dd9414ca459adf2
+      - image: exploreindiatapsolreg.azurecr.io/tap170/tap-packages/build-service/tdp-configurator-tap-workload@sha256:99dd8fbf7ad31cab18a03a767b9f600e4e1b9bbcf904552d7f5e1f96962571f1
         name: workload
         resources: {}
         securityContext:
