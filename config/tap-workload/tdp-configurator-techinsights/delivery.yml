@@ -16,12 +16,14 @@ spec:
   template:
     metadata:
       annotations:
-        apps.tanzu.vmware.com/correlationid: exploreindiatapsolreg.azurecr.io/tap170/tap-packages?sub_path=builder
+        apps.tanzu.vmware.com/correlationid: exploreindiatapsolreg.azurecr.io/tap171/tap-packages?sub_path=builder
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
           spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"tdp-configurator","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"web"},"name":"tdp-configurator-techinsights","namespace":"tap-workload"},"spec":{"build":{"env":[{"name":"BP_NODE_RUN_SCRIPTS","value":"set-tdp-config,portal:pack"},{"name":"TPB_CONFIG","value":"tdp-config.yaml"},{"name":"TPB_CONFIG_STRING","value":"YXBwOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICJAdm13YXJlLXRhbnp1L3RkcC1wbHVnaW4tdGVjaGluc2lnaHRzIgogICAgICB2ZXJzaW9uOiAiMC4wLjIiCgpiYWNrZW5kOgogIHBsdWdpbnM6CiAgICAtIG5hbWU6ICJAdm13YXJlLXRhbnp1L3RkcC1wbHVnaW4tdGVjaGluc2lnaHRzLWJhY2tlbmQiCiAgICAgIHZlcnNpb246ICIwLjAuMiIK"}]},"source":{"image":"exploreindiatapsolreg.azurecr.io/tap171/tap-packages@sha256:29f978561d7d931c9a118c167eae905ce41990131013339aaff10c291ac6c42b","subPath":"builder"}}}
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: tdp-configurator
@@ -30,10 +32,17 @@ spec:
         carto.run/workload-name: tdp-configurator-techinsights
     spec:
       containers:
-      - image: exploreindiatapsolreg.azurecr.io/tap170/tap-packages/build-service/tdp-configurator-techinsights-tap-workload@sha256:2991df766298b7dabefbc5b99ee81aba7d6b1def8bbc9899a5085c24dd5b39b4
+      - image: exploreindiatapsolreg.azurecr.io/tap171/tap-packages/build-service/tdp-configurator-techinsights-tap-workload@sha256:e48355e4fa407bd9881787b89781dacde53d8aa780cdf4d1b2461c72897436c9
         name: workload
         resources: {}
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
           runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
       serviceAccountName: default
 
