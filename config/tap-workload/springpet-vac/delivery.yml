@@ -1,23 +1,23 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: tanzu-java-web-app
+  name: springpet-vac
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
     kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
-    app.kubernetes.io/part-of: tanzu-java-web-app
+    app.kubernetes.io/part-of: spring-petclinic
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: tanzu-java-web-app
+    carto.run/workload-name: springpet-vac
 spec:
   template:
     metadata:
       annotations:
-        apps.tanzu.vmware.com/correlationid: https://github.com/Eknathreddy09/tanzu-java-web-app?sub_path=/
-        boot.spring.io/version: 2.7.3
+        apps.tanzu.vmware.com/correlationid: https://github.com/explore-india-booth/spring-tap-petclinic?sub_path=/
+        boot.spring.io/version: 2.6.9
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
@@ -29,26 +29,32 @@ spec:
           spring-boot-convention/app-live-view-appflavour-check
           spring-boot-convention/app-live-view-connector-boot
           spring-boot-convention/app-live-view-appflavours-boot
+          spring-boot-convention/service-intent-mysql
+          spring-boot-convention/service-intent-postgres
         developer.conventions/target-containers: workload
+        services.conventions.carto.run/mysql: mysql-connector-java/8.0.29
+        services.conventions.carto.run/postgres: postgresql/42.3.6
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/part-of: tanzu-java-web-app
+        app.kubernetes.io/part-of: spring-petclinic
         apps.tanzu.vmware.com/auto-configure-actuators: "false"
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: tanzu-java-web-app
+        carto.run/workload-name: springpet-vac
         conventions.carto.run/framework: spring-boot
+        services.conventions.carto.run/mysql: workload
+        services.conventions.carto.run/postgres: workload
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.path: actuator
         tanzu.app.live.view.application.actuator.port: "8080"
         tanzu.app.live.view.application.flavours: spring-boot
-        tanzu.app.live.view.application.name: tanzu-java-web-app
+        tanzu.app.live.view.application.name: springpet-vac
     spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: exploreindiatapsolreg.azurecr.io/tap172/tap-packages/build-service/tanzu-java-web-app-tap-workload@sha256:b7c536dc9dba3e0ac0c67128664310086f8909ace38eb64489d9f8f26184af74
+        image: exploreindiatapsolreg.azurecr.io/tap172/tap-packages/build-service/springpet-vac-tap-workload@sha256:8f88c06ff257e120ffff0d5d2d47c24f29ca5d6fe643f812aef322e174e1ff25
         livenessProbe:
           httpGet:
             path: /livez
