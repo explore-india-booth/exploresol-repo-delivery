@@ -17,6 +17,7 @@ spec:
     metadata:
       annotations:
         apps.tanzu.vmware.com/correlationid: https://github.com/Eknathreddy09/tanzu-java-web-app?sub_path=/
+        autoscaling.knative.dev/minScale: "2"
         boot.spring.io/version: 2.7.3
         conventions.carto.run/applied-conventions: |-
           spring-boot-convention/auto-configure-actuators-check
